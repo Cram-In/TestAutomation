@@ -2,4 +2,5 @@ virtualenv/
 .vscode/
 test.py
 .ipynb_checkpoints
-.ipynb
+Untitled.ipynb
+README.md.save
