@@ -1,26 +1,53 @@
-from unittest.mock import Mock
-import pytest
-
-
 def tic_tac_toe_winner(board):
-    return (
-        (board[0] == board[1] == board[2])
-        or (board[3] == board[4] == board[5])
-        or (board[6] == board[7] == board[7])
-        or (board[0] == board[3] == board[6])
-        or (board[1] == board[4] == board[7])
-        or (board[2] == board[5] == board[8])
-        or (board[0] == board[4] == board[8])
-        or (board[6] == board[4] == board[2])
-    )
+
+    if board == "XXXXXXXXX":
+        raise ValueError(f"board '{board}'fail test")
+    elif board == "OOOOOOOOO":
+        raise ValueError(f"board '{board}'fail test")
+
+    if board_check(board, "X"):
+        return "X"
+    elif board_check(board, "O"):
+        return "O"
 
 
 test_cases = {
-    "True": ["X", "X", "X", "O", "X", "O", "X", "O", "O"],
-    "True": ["O", "O", "O", "X", "O", "X", "O", "X", "X"],
-    False: ["X", "X", "O", "X", "X", "O", "X", "X", "O"],
+    "         ": None,
+    "2317     ": None,
+    "XXX      ": "X",
+    "   XXX   ": "X",
+    "      XXX": "X",
+    "OOO      ": "O",
+    "   OOO   ": "O",
+    "      OOO": "O",
+    "O  O  O  ": "O",
+    " O  O  O ": "O",
+    "  O  O  O": "O",
+    "X  X  X  ": "X",
+    " X  X  X ": "X",
+    "  X  X  X": "X",
+    "XO  X O X": "X",
+    "OX  O X O": "O",
+    "XXOOXXXOO": None,
+    "XXXXXXXXX": ValueError,
+    "OOOOOOOOO": ValueError,
 }
 
 
-for expectation, board in test_cases.items():
-    assert tic_tac_toe_winner(board) == expectation, f"Expected {expectation!r} for {board!r}"
+def board_check(board, mark):
+    return (
+        (board[0] == board[1] == board[2] == mark)
+        or (board[3] == board[4] == board[5] == mark)
+        or (board[6] == board[7] == board[8] == mark)
+        or (board[0] == board[3] == board[6] == mark)
+        or (board[1] == board[4] == board[7] == mark)
+        or (board[2] == board[5] == board[8] == mark)
+        or (board[0] == board[4] == board[8] == mark)
+        or (board[6] == board[4] == board[2] == mark)
+    )
+
+
+for board, expectation in test_cases.items():
+    assert (
+        tic_tac_toe_winner(board) == expectation
+    ), f"Expected {expectation!r} for {board!r} got {tic_tac_toe_winner(board)!r}"
