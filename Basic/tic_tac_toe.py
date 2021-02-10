@@ -1,9 +1,7 @@
 def tic_tac_toe_winner(board):
 
-    if board == "XXXXXXXXX":
-        raise ValueError(f"board '{board}'fail test")
-    elif board == "OOOOOOOOO":
-        raise ValueError(f"board '{board}'fail test")
+    if board == "XXXXXXXXX" or board == "OOOOOOOOO":
+        raise ValueError()
 
     if board_check(board, "X"):
         return "X"
