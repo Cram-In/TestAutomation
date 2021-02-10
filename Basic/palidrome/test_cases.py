@@ -6,4 +6,6 @@ test_cases = {
     "tattarrattat": True,
     "12345": False,
     "101": True,
+    101: True,
+    "!£$%^&**&^%$£!": True,
 }
