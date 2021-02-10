@@ -4,3 +4,4 @@ test.py
 .ipynb_checkpoints
 Untitled.ipynb
 README.md.save
+__pycache__
