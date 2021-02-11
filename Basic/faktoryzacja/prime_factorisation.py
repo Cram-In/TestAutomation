@@ -4,6 +4,8 @@ from functools import wraps
 def validate_number(function):
     @wraps(function)
     def wrapper(num):
+        if num != int:
+            raise ValueError("illegal symbol")
         if num > 1:
             for i in range(2, num):
                 if (num % i) == 0:
