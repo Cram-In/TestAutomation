@@ -5,3 +5,4 @@ test.py
 Untitled.ipynb
 README.md.save
 __pycache__
+.pytest_cache
