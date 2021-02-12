@@ -11,7 +11,6 @@ class TestFinishedGame(unittest.TestCase):
             with self.subTest(row=i + 1):
                 self.assertEqual(tic_tac_toe_winner(board), "X")
 
-    @unittest.skip("not implemented")
     def test_3x_in_a_column(self):
         self.assertEqual(tic_tac_toe_winner("X  XO XOO"), "X")
 
