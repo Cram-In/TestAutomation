@@ -1,0 +1,17 @@
+[coverage:run]
+include = 
+        tic_tac_toe/*
+        play/*
+
+[coverage:report]
+show_missing = true
+exclude_lines =
+    def __repr__
+
+[coverage:html]
+directory = docs/coverage
+
+[tool:pytest]
+addopts = 
+        --cov=tic_tac_toe
+        --cov=play
