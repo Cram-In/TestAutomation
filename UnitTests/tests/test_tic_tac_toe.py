@@ -2,8 +2,7 @@ import unittest
 import doctest
 import pytest
 
-from play.tic_tac_toe import tic_tac_toe
-from tic_tac_toe import tic_tac_toe_winner
+from play.tic_tac_toe import tic_tac_toe_winner
 
 
 class TestFinishedGame(unittest.TestCase):
