@@ -1,20 +1,24 @@
 from converter.utilities import *
 
-numeralMap = (
-    ("M", 1000),
-    ("CM", 900),
-    ("D", 500),
-    ("CD", 400),
-    ("C", 100),
-    ("XC", 90),
-    ("L", 50),
-    ("XL", 40),
-    ("X", 10),
-    ("IX", 9),
-    ("V", 5),
-    ("IV", 4),
-    ("I", 1),
-)
+
+def convert_to():
+    display(operation_list)
+    operation = int(input("Please select acction: "))
+    print(operation)
+
+    while True:
+        # check input
+        if operation not in allowed_operactions:
+            print("Operation not allowed. Try again.")
+            convert_to()
+        # to roman
+        if operation == 1:
+            print("Convert to Roman")
+            convert_to_roman(num)
+        # to arabic
+        elif operation == 2:
+            print("Convert to Arabic")
+            convert_to_arabic(num)
 
 
 def convert_to_roman(num):
@@ -29,3 +33,7 @@ def convert_to_roman(num):
             result += roman
             num -= arabic
     return result
+
+
+def convert_to_arabic(num):
+    pass
