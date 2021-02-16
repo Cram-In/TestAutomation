@@ -1,6 +1,6 @@
 from converter.utilities import *
 
-
+# convertion option selection
 def convert_to():
     display(operation_list)
     operation = int(input("Please select acction: "))
@@ -9,7 +9,7 @@ def convert_to():
     while True:
         # check input
         if operation not in allowed_operactions:
-            print("Operation not allowed. Try again.")
+            raise InputError("Operation not allowed. Try again.")
             convert_to()
         # to roman
         if operation == 1:
@@ -21,6 +21,7 @@ def convert_to():
             convert_to_arabic(num)
 
 
+# arabic to roman
 def convert_to_roman(num):
     if int(num) != num:
         raise ValueError("Not integer")
@@ -35,5 +36,11 @@ def convert_to_roman(num):
     return result
 
 
-def convert_to_arabic(num):
-    pass
+# roman to arabic
+def convert_to_arabic(string):
+    if string != string.upper():
+        raise InputError("Input must be in Upper Cases")
+    if ValidationOfRomanNumerals(string):
+        pass
+    else:
+        raise InvalidRomanNumeralError("invalid roman numeral")

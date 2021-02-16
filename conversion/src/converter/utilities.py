@@ -6,6 +6,27 @@ class OutOfRangeError(Exception):
         return self.message
 
 
+class InputError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return self.message
+
+
+class InvalidRomanNumeralError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return self.message
+
+
+def ValidationOfRomanNumerals(string):
+    import re
+
+    return (bool(re.search(r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$",string)))
+
 op_roman = 1
 op_arabic = 2
 

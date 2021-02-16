@@ -1,9 +1,11 @@
 import unittest
 import pytest
 
-from converter.convert_inputs import convert_to_roman
+from converter.convert_inputs import convert_to_roman, convert_to_arabic, convert_to
 from converter.utilities import *
 
+
+# roman converter tests
 test_cases = {5: "V", 4: "IV", 9: "IX", 11: "XI", 90: "XC", 110: "CX", 777: "DCCLXXVII"}
 
 
@@ -21,3 +23,19 @@ class TestFinalConvertion(unittest.TestCase):
     def test_converting_to_roman(self):
         for num, result in test_cases.items():
             self.assertEqual(convert_to_roman(num), result)
+
+
+# arabic converter tests
+
+
+def test_if_input_upper():
+    with pytest.raises(InputError):
+        convert_to_arabic("ii")
+
+
+def test_if_valid_roman_num():
+    with pytest.raises(InvalidRomanNumeralError):
+        convert_to_arabic("MMMM")
+
+
+# selection tests
