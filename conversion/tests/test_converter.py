@@ -6,11 +6,11 @@ from converter.utilities import *
 
 
 # roman converter tests
-test_cases = {5: "V", 4: "IV", 9: "IX", 11: "XI", 90: "XC", 110: "CX", 777: "DCCLXXVII"}
+test_cases = [(5, "V"), (4, "IV"), (9, "IX"), (11, "XI"), (90, "XC"), (110, "CX"), (777, "DCCLXXVII")]
 
 
 def test_number_out_of_range():
-    with pytest.raises(OutOfRangeError):
+    with pytest.raises(ValueError):
         convert_to_roman(5000)
 
 
@@ -19,10 +19,9 @@ def test_number_not_ingeger():
         convert_to_roman("Ala Ma Kota")
 
 
-class TestFinalConvertionToRoman(unittest.TestCase):
-    def test_converting_to_roman(self):
-        for num, result in test_cases.items():
-            self.assertEqual(convert_to_roman(num), result)
+@pytest.mark.parametrize("test_input,expected", test_cases)
+def test_converting_to_roman(test_input, expected):
+    assert convert_to_roman(test_input) == expected
 
 
 # arabic converter tests
@@ -34,14 +33,23 @@ def test_if_input_upper():
 
 
 def test_if_valid_roman_num():
-    with pytest.raises(InvalidRomanNumeralError):
+    with pytest.raises(ValueError):
         convert_to_arabic("MMMM")
 
 
-class TestFinalConvertionToArabic(unittest.TestCase):
-    def test_converting_to_arabic(self):
-        for result, string in test_cases.items():
-            self.assertEqual(convert_to_arabic(string), result)
+@pytest.mark.parametrize("expected,test_input", test_cases)
+def test_converting_to_arabic(test_input, expected):
+    assert convert_to_arabic(test_input) == expected
 
 
 # selection tests
+
+
+def test_convert_to():
+    with pytest.raises(InputError):
+        convert_to(4)
+
+
+def test_convert_to_illegal_symbols():
+    with pytest.raises(InputError):
+        convert_to("Ala ma Kota")
