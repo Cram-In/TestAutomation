@@ -25,7 +25,8 @@ class InvalidRomanNumeralError(Exception):
 def ValidationOfRomanNumerals(string):
     import re
 
-    return (bool(re.search(r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$",string)))
+    return bool(re.search(r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$", string))
+
 
 op_roman = 1
 op_arabic = 2

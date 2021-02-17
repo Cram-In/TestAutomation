@@ -1,3 +1,4 @@
+import roman
 from converter.utilities import *
 
 # convertion option selection
@@ -25,8 +26,8 @@ def convert_to():
 def convert_to_roman(num):
     if int(num) != num:
         raise ValueError("Not integer")
-    if not (0 < num < 5000):
-        raise OutOfRangeError("number out of range (must be 1..4999)")
+    if not (0 < num < 4000):
+        raise OutOfRangeError("number out of range (must be 1..3999)")
 
     result = ""
     for roman, arabic in numeralMap:
@@ -41,6 +42,7 @@ def convert_to_arabic(string):
     if string != string.upper():
         raise InputError("Input must be in Upper Cases")
     if ValidationOfRomanNumerals(string):
-        pass
+        arabic_number = roman.fromRoman(string)
+        return arabic_number
     else:
         raise InvalidRomanNumeralError("invalid roman numeral")

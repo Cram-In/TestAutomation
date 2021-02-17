@@ -19,7 +19,7 @@ def test_number_not_ingeger():
         convert_to_roman("Ala Ma Kota")
 
 
-class TestFinalConvertion(unittest.TestCase):
+class TestFinalConvertionToRoman(unittest.TestCase):
     def test_converting_to_roman(self):
         for num, result in test_cases.items():
             self.assertEqual(convert_to_roman(num), result)
@@ -36,6 +36,12 @@ def test_if_input_upper():
 def test_if_valid_roman_num():
     with pytest.raises(InvalidRomanNumeralError):
         convert_to_arabic("MMMM")
+
+
+class TestFinalConvertionToArabic(unittest.TestCase):
+    def test_converting_to_arabic(self):
+        for result, string in test_cases.items():
+            self.assertEqual(convert_to_arabic(string), result)
 
 
 # selection tests
