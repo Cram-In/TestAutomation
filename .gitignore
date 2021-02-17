@@ -8,3 +8,5 @@ __pycache__
 .pytest_cache
 test_prime_factors.py
 converter.egg-info
+tic_tac_toe.egg-info
+start.sh
