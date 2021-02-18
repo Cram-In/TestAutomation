@@ -22,6 +22,7 @@ def winner(connection, game_id):
         .order_by(history.c.move_id.asc())
     )
     board = {position: symbol for position, symbol in connection.execute(query)}
+
     return requests.get(
         "http://127.0.0.1:5000/winner", params={"board": "".join(board.get(position, " ") for position in range(9))}
     )

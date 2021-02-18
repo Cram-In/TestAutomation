@@ -3,36 +3,8 @@ from os import close, unlink
 from tempfile import mkstemp
 from itertools import count
 from sqlalchemy import create_engine
-from unittest import TestCase
 
 from tic_tac_toe.database import winner, metadata, history
-
-
-class TestWinner(TestCase):
-
-    games = ["4X1O5X3O2X6O8X"]
-
-    def setUp(self):
-        self.fd, self.name = mkstemp(prefix="test_winner_", suffix=".sqlite")  # ➜ 1
-        engine = create_engine(f"sqlite:///{self.name}")
-        metadata.create_all(engine)  # ➜ 2
-
-        move_id = count(1)
-
-        with engine.connect() as connection:
-            for game_id, moves in enumerate(self.games, 1):  # ➜ 3
-                connection.execute(
-                    history.insert(),
-                    [
-                        {"game_id": game_id, "move_id": next(move_id), "position": int(position), "symbol": symbol}
-                        for position, symbol in zip(moves[::2], moves[1::2])
-                    ],
-                )
-
-        self.connection = engine.connect()
-
-    def test_3x_in_a_column(self):
-        self.assertEqual(winner(self.connection, 1), "X")  # ➜ 4
 
 
 @pytest.fixture
@@ -63,10 +35,7 @@ def database_connection():
 
 
 def test_3x_in_a_column(database_connection, create_games):
+    response = winner(database_connection, 1)
+    print(dir(response))
     create_games("4X1O5X3O2X6O8X")
     assert winner(database_connection, 1) == "X"
-
-
-def tearDown(self):
-    close(self.fd)
-    unlink(self.name)  # ➜ 5
