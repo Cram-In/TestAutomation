@@ -1,7 +1,7 @@
 import unittest
 import pytest
 
-from converter.convert_inputs import convert_to_roman, convert_to_arabic, convert_to
+from converter.convert_inputs import convert_to_roman, convert_to_arabic
 from converter.utilities import *
 
 
@@ -40,16 +40,3 @@ def test_if_valid_roman_num():
 @pytest.mark.parametrize("expected,test_input", test_cases)
 def test_converting_to_arabic(test_input, expected):
     assert convert_to_arabic(test_input) == expected
-
-
-# selection tests
-
-
-def test_convert_to():
-    with pytest.raises(InputError):
-        convert_to(4)
-
-
-def test_convert_to_illegal_symbols():
-    with pytest.raises(InputError):
-        convert_to("Ala ma Kota")

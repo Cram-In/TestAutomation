@@ -1,20 +1,6 @@
 import roman
 from converter.utilities import *
 
-# convertion option selection
-def convert_to(operation):
-    # check input
-    if operation not in allowed_operations:
-        raise InputError("Operation not allowed. Try again.")
-    # to roman
-    if operation == 1:
-        print("Convert to Roman")
-        convert_to_roman(num)
-    # to arabic
-    elif operation == 2:
-        print("Convert to Arabic")
-        convert_to_arabic(string)
-
 
 # arabic to roman
 def convert_to_roman(num):
