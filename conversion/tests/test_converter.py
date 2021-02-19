@@ -1,4 +1,3 @@
-import unittest
 import pytest
 
 from converter.convert_inputs import convert_to_roman, convert_to_arabic

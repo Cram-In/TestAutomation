@@ -1,11 +1,11 @@
 import re
 
 
-def ValidationOfRomanNumerals(string):
+def validation_of_roman_numerals(string):
     return bool(re.search(r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$", string))
 
 
-numeralMap = (
+numeral_map = (
     ("M", 1000),
     ("CM", 900),
     ("D", 500),

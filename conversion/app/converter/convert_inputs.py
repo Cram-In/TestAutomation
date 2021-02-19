@@ -10,7 +10,7 @@ def convert_to_roman(num):
         raise ValueError("number out of range (must be 1..3999)")
 
     result = ""
-    for roman, arabic in numeralMap:
+    for roman, arabic in numeral_map:
         while num >= arabic:
             result += roman
             num -= arabic
@@ -21,7 +21,7 @@ def convert_to_roman(num):
 def convert_to_arabic(string):
     if string != string.upper():
         raise InputError("Input must be in Upper Cases")
-    if ValidationOfRomanNumerals(string):
+    if validation_of_roman_numerals(string):
         arabic_number = roman.fromRoman(string)
         return arabic_number
     else:
